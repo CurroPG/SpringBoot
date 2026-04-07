@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Alumno</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 0; }
+        header { background: #1f4e79; color: white; padding: 20px; text-align: center; }
+        .contenedor { width: 90%; max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #1f4e79; margin-bottom: 25px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+        input, select { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        button { background: #1f4e79; color: white; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #163a5f; }
+        .volver { display: inline-block; margin-top: 15px; color: #1f4e79; text-decoration: none; }
+        .volver:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Dashboard Académico</h1>
+    <p>Dar de alta un nuevo alumno</p>
+</header>
+<div class="contenedor">
+    <h2>Nuevo Alumno</h2>
+    <form th:action="@{/alumnos/nuevo}" th:object="${alumno}" method="post">
+        <label>Nombre</label>
+        <input type="text" th:field="*{nombre}" placeholder="Nombre" required/>
+
+        <label>Apellidos</label>
+        <input type="text" th:field="*{apellidos}" placeholder="Apellidos" required/>
+
+        <label>Email</label>
+        <input type="email" th:field="*{email}" placeholder="correo@ejemplo.es" required/>
+
+        <label>Fecha de nacimiento</label>
+        <input type="date" th:field="*{fechaNacimiento}"/>
+
+        <label>Curso</label>
+        <select th:field="*{curso}">
+            <option value="">-- Sin asignar --</option>
+            <option th:each="curso : ${cursos}"
+                    th:value="${curso.id}"
+                    th:text="${curso.nombre}">
+            </option>
+        </select>
+
+        <button type="submit">Guardar Alumno</button>
+    </form>
+    <a class="volver" th:href="@{/dashboard}">← Volver al dashboard</a>
+</div>
+</body>
+</html>

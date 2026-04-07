@@ -1,3 +1,5 @@
+package com.example.alumnos.entity;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -28,7 +30,7 @@ public class Curso {
     @Column(nullable = false)
     private Integer creditos;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "profesor_id")
     private Profesor profesor;
 

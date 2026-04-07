@@ -19,7 +19,7 @@
     <description>Proyecto alumnos con Spring Boot y Supabase</description>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>22</java.version>
     </properties>
 
     <dependencies>
