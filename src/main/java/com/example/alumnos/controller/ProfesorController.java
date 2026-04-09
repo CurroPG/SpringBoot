@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class ProfesorController {
     private final ProfesorRepository profesorRepository;
-    private final CursoRepository cursoRepository;
 
-    public ProfesorController(ProfesorRepository profesorRepository, CursoRepository cursoRepository) {
+    public ProfesorController(ProfesorRepository profesorRepository) {
         this.profesorRepository = profesorRepository;
-        this.cursoRepository = cursoRepository;
     }
 
 
@@ -27,7 +25,6 @@ public class ProfesorController {
     @GetMapping("/profesores/nuevo")
     public String nuevoProfesor(Model model) {
         model.addAttribute("profesor", new Profesor());
-        model.addAttribute("cursos", cursoRepository.findAll());
         return "formulario-profesor";
     }
 
@@ -45,7 +42,6 @@ public class ProfesorController {
     public String editarProfesor(Model model, @PathVariable Long id){
         Profesor profesor = profesorRepository.findById(id).get();
         model.addAttribute("profesor", profesor);
-        model.addAttribute("cursos", cursoRepository.findAll());
         return "formulario-editar-profesor";
     }
 
