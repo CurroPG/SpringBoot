@@ -31,7 +31,7 @@ public class Profesor {
     @Column(length = 100)
     private String departamento;
 
-    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Curso> cursos = new ArrayList<>();
 
     public Profesor() {
@@ -46,6 +46,8 @@ public class Profesor {
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) { this.id = id; }
 
     public String getNombre() {
         return nombre;

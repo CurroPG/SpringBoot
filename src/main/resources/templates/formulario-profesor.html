@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Profesor</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 0; }
+        header { background: #1f4e79; color: white; padding: 20px; text-align: center; }
+        .contenedor { width: 90%; max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #1f4e79; margin-bottom: 25px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+        input { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        button { background: #1f4e79; color: white; padding: 12px 25px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #163a5f; }
+        .volver { display: inline-block; margin-top: 15px; color: #1f4e79; text-decoration: none; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Dashboard Académico</h1>
+    <p>Nuevo Profesor</p>
+</header>
+<div class="contenedor">
+    <h2>Nuevo Profesor</h2>
+    <form action="/profesores/nuevo" method="post">
+        <label>Nombre completo</label>
+        <input type="text" name="nombre" placeholder="Nombre y apellidos" required/>
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="correo@ejemplo.es" required/>
+
+        <label>Departamento</label>
+        <input type="text" name="departamento" placeholder="Ej: Informática"/>
+
+        <button type="submit">Guardar Profesor</button>
+    </form>
+    <a class="volver" href="/profesores">&#8592; Volver al listado</a>
+</div>
+</body>
+</html>
